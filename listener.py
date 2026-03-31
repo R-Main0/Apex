@@ -1,55 +1,50 @@
+import threading
 import sounddevice as sd
 import queue
 import json
-from vosk import Model, KaldiRecognizer
+import vosk
 
-import commands  # <-- your separate file
-
-# Path to your Vosk model
-MODEL_PATH = "C:/vosk-model-small-en-us-0.15"
-
-q = queue.Queue()
-
-# Audio callback (runs constantly)
-def audio_callback(indata, frames, time, status):
-    q.put(bytes(indata))
-
-# Load model
-model = Model(MODEL_PATH)
-recognizer = KaldiRecognizer(model, 16000)
+import actions  # Command file
 
 # Command mapping
-COMMANDS = {
-    "start listening": commands.start_listener,
-    "open browser": commands.open_browser,
-    "hello": commands.show_message,
+KEYWORDS = {
+    "action": actions.show_message
 }
 
-def handle_text(text):
-    print("Heard:", text)
+# --- Setup Vosk model ---
+model = vosk.Model("vosk-model-small-en-us-0.15")  # path to your model
+q = queue.Queue()
 
-    for phrase, func in COMMANDS.items():
-        if phrase in text:
-            print(f"Triggering: {phrase}")
-            func()
-            return
+# --- Audio callback for streaming ---
+def audio_callback(indata, frames, time, status):
+    if status:
+        print(status)
+    q.put(bytes(indata))
 
-# Start audio stream
-with sd.RawInputStream(
-    samplerate=16000,
-    blocksize=8000,
-    dtype='int16',
-    channels=1,
-    callback=audio_callback
-):
-    print("Listening for commands...")
-
-    while True:
+# --- Main listening thread ---
+def recognize_loop():
+    global running
+    rec = vosk.KaldiRecognizer(model, 16000)
+    while running:
         data = q.get()
-
-        if recognizer.AcceptWaveform(data):
-            result = json.loads(recognizer.Result())
+        if rec.AcceptWaveform(data):
+            result = json.loads(rec.Result())
             text = result.get("text", "")
-
             if text:
-                handle_text(text)
+                print(f"Recognized: {text}")
+                for keyword, func in KEYWORDS.items():
+                    if keyword in text.lower():
+                        func()
+
+# --- Start the stream ---
+running = True
+stream = sd.InputStream(samplerate=16000, channels=1, callback=audio_callback)
+with stream:
+    threading.Thread(target=recognize_loop, daemon=True).start()
+    print("Listening... Press Ctrl+C to stop.")
+    try:
+        while running:
+            sd.sleep(1000)
+    except KeyboardInterrupt:
+        running = False
+        print("Stopped by user")
