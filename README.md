@@ -1,4 +1,4 @@
-# Apex ![Apex_Logo](resources/Apex.ico)
+<h1 style="display: flex; justify-content: space-between;">Apex </h1>
 
 Apex is a personalized background program designed to execute specific functions and provide text-based responses using a local AI system.
 
@@ -26,3 +26,5 @@ Apex is a personalized background program designed to execute specific functions
 3. The recognized text is scanned for predefined keywords.
 4. When a keyword is detected, the corresponding function is executed.
 5. Optional AI responses are generated locally.
+
+<img src="resources/Apex.ico" width="80" alt="Apex Logo">
