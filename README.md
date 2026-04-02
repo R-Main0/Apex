@@ -1,4 +1,4 @@
-# Apex
+# Apex ![Apex_Logo](resources/Apex.ico)
 
 Apex is a personalized background program designed to execute specific functions and provide text-based responses using a local AI system.
 
