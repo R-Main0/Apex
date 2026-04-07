@@ -1,7 +1,6 @@
 import auxilery
 import pystray
 import listener
-import sys
 import os
 import subprocess
 from PIL import Image
@@ -15,7 +14,7 @@ def end():
 # --- Check if on home wifi ---
 if not auxilery.connected():
     print("**Not connected to home wifi.**")
-    end()
+    #end()
 
 # ----------------------------
 # Main tray setup
