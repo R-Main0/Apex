@@ -2,6 +2,14 @@ import subprocess
 import pystray
 import os
 from PIL import Image
+import win32event
+import win32api
+
+mutex = win32event.CreateMutex(None, False, "ApexSparkMutex")
+
+if win32api.GetLastError() == 183:
+    print("Already running")
+    os._exit(0)
 
 # ----------------------------
 # Main tray setup
