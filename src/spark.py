@@ -16,8 +16,9 @@ if win32api.GetLastError() == 183:
 # ----------------------------
 def kill(icon):
     icon.stop()
-    subprocess.Popen(["pythonw", r"C:\Users\cathy\Apex\src\main.py"],
-    creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP)
+    subprocess.Popen([r"C:\Users\cathy\AppData\Local\Python\pythoncore-3.14-64\pythonw.exe", 
+                      r"C:\Users\cathy\Apex\src\main.py"],
+        creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP)
     os._exit(0)  # exits immediately
 
 img = Image.open("resources/Apex.ico") #ico image
