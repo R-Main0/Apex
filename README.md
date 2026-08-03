@@ -4,19 +4,19 @@ Apex is a personalized background program designed to execute specific functions
 
 ## Features
 
-- 🎤 **Voice Recognition**  
+- **Voice Recognition**  
   Utilizes Vosk speech recognition to continuously monitor audio input and detect keywords.
 
-- ⚡ **Keyword-Based Actions**  
+- **Keyword-Based Actions**  
   Matches recognized speech against predefined keywords and triggers associated functions.
 
-- 🧠 **Local AI Integration**  
+- **Local AI Integration**  
   Generates text responses using a locally hosted AI model.
 
-- 🔇 **Background Operation**  
+- **Background Operation**  
   Runs silently in the background until a keyword interrupt is detected.
 
-- 📡 **Bluetooth Interaction**  
+- **Bluetooth Interaction**  
   Uses GrooveAPI to communicate with nearby Bluetooth devices.
 
 ## How It Works
