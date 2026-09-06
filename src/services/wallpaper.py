@@ -8,7 +8,7 @@ projectIDs = {
     "Interstellar": 2465407361,
     "Rise": 3350162681,
     "Deep": 1320654109,
-    "real": 860024140
+    "Real": 860024140
 }
 
 def setWallpaper(name):

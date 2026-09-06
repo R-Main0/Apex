@@ -1,7 +1,10 @@
 import uuid
 import requests
+import os
+import dotenv
 
-API_KEY = "9078ff45-1908-494d-8e21-1ead6aef7bbc"
+dotenv.load_dotenv()
+API_KEY = os.getenv("GOVEE_API_KEY")
 GOVEE_URL = "https://openapi.api.govee.com/router/api/v1/device/control"
 HEADERS = {
     "Govee-API-Key": API_KEY,
