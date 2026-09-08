@@ -1,6 +1,6 @@
 import queue
 
-RGBpresets = [[200, 0, 0, "Red"], [30, 180, 30, "Green"], [10, 20, 230, "Blue"]]
+RGBpresets = [[200, 0, 0, "Red"], [255, 90, 0, "Fall"], [10, 20, 230, "Blue"]]
 
 vosk_path = r"C:\Users\cathy\Apex\vosk-model-small-en-us-0.15"
 wake_path = "resources/Apex.onnx"
