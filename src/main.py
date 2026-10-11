@@ -3,7 +3,7 @@ import pystray
 import listener.actions as actions
 import listener.stream as stream
 import services.audio as audio
-import services.govee_local as govee_local
+import services.lighting.govee_local as govee_local
 import variables.config as config
 import os
 import time
@@ -31,7 +31,7 @@ def kill(icon):
     controller.end()
 
 
-img = Image.open("resources/ApexActive.ico")
+img = Image.open("resources/icons/ApexActive.ico")
 icon = pystray.Icon(
     "Apex",
     img,
@@ -45,8 +45,8 @@ icon = pystray.Icon(
 icon.run_detached()
 govee_local.start_govee_local_engine()
 audio.start_audio_engine()
-actions.boot()
-time.sleep(2)
+#actions.boot()
+#time.sleep(2)
 stream.runStream()
 
 

@@ -27,5 +27,7 @@ def connectWifi():
         return False
     
 def connectBlueTooth():
-    subprocess.run([r"C:\Tools\nircmd\nircmd.exe", "setdefaultsounddevice", "SW-208"])
+    subprocess.run([r"C:\Tools\nircmd\nircmd.exe", "showsounddevices"])
+    blstatus = subprocess.run([r"C:\Tools\nircmd\nircmd.exe", "setdefaultsounddevice", "SW-208"])
+
 

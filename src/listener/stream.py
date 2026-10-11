@@ -5,18 +5,20 @@ import variables.config as config
 import listener.core as core
 import os
 
-device = next(i for i, d in enumerate(sd.query_devices()) if "Microphone" in d["name"])
+device_list = sd.query_devices()
+device = next(i for i, d in enumerate(device_list) if "Microphone" in d["name"])
+print(f"Microphone: {device_list[device]["name"]}")
 
 def runStream():
     # --- Start the stream ---
     running = True
-    stream = sd.RawInputStream(samplerate=config.sr, blocksize = 512, channels=1, callback=audio_callback, device=device, dtype="int16")
+    stream = sd.RawInputStream(samplerate=config.sr, blocksize = config.blocksize, channels=1, callback=audio_callback, device=device, dtype="int16")
     with stream:
         threading.Thread(target=core.recognize_loop, daemon=True).start()
         print("Listening... Press Ctrl+C to stop.")
         try:
             while running:
-                sd.sleep(1000)
+                sd.sleep(10)
         except KeyboardInterrupt:
             running = False
             print("Stopped by user")

@@ -1,6 +1,6 @@
-import services.govee_local as govee_local
+import services.lighting.govee_local as govee_local
 import services.xbox as xbox
-import services.govee_api as govee_api
+import services.lighting.govee_api as govee_api
 import variables.state as state
 import services.controller as controller
 import services.audio as audio
@@ -12,8 +12,8 @@ import random
 
 #--- Device Variables ---
 STRIP_IP = "192.168.1.97"
-CLOSET_IP = "192.168.1.174"
-LAMP_IP = "192.168.1.175"
+LAMP_IP = "192.168.1.174"
+CLOSET_IP = "192.168.1.175"
 BATHROOM_IP1 = "192.168.1.102"
 BATHROOM_IP2 = "192.168.1.142"
 

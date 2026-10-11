@@ -1,16 +1,14 @@
-from openwakeword.model import Model
 import vosk
 import time
-import listener.actions as actions
 import variables.state as state
-import services.controller as controller
-import services.govee_local as govee_local
+import services.lighting.govee_local as govee_local
 import variables.config as config
-import listener.recognition as recognition
-import listener.wakeword as wakeword
+import listener.speech.recognition as recognition
+import listener.speech.wakeword as wakeword
 import services.audio as audio
+import listener.sound.event as event
 
-model = vosk.Model(config.vosk_path)  # path to model
+model = vosk.Model(config.vosk_path_lgraph)  # path to model
 
 recognizer = recognition.SpeechRecognizer()
 
@@ -22,6 +20,8 @@ def recognize_loop():
         data = config.q.get()
         while not config.q.empty():
             data = config.q.get()
+
+        event.check_clap(data)
 
         if wakeword.check_wakeword(data):
             recognizer.reset()  # Clears old audio

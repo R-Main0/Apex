@@ -21,7 +21,7 @@ def kill(icon):
         creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP)
     os._exit(0)  # exits immediately
 
-img = Image.open("resources/Apex.ico") #ico image
+img = Image.open("resources/icons/Apex.ico") #ico image
 icon = pystray.Icon(
     "Apex", 
     img,
