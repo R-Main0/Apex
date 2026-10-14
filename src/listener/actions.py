@@ -44,7 +44,19 @@ def wake():
 
 def sleep():
     print("Sleeping...")
-    govee_local.switchAll(0)
+    audio.enqueue_sound("universfield-soft-cinematic-piano-outro-151764.wav")
+
+    time.sleep(.5)
+    govee_local.switch(LAMP_IP, 0)
+    time.sleep(.5)
+    govee_local.switch(BATHROOM_IP1, 0)
+    govee_local.switch(BATHROOM_IP2, 0)
+    time.sleep(.7)
+    govee_local.switch(CLOSET_IP, 0)
+    time.sleep(1)
+    govee_local.switch(STRIP_IP, 0)
+    time.sleep(1)
+    
     state.night = True
     keyboard.press_and_release('windows+x')
     time.sleep(0.2)
