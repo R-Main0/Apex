@@ -8,7 +8,7 @@ import listener.speech.wakeword as wakeword
 import services.audio as audio
 import listener.sound.event as event
 
-model = vosk.Model(config.vosk_path_lgraph)  # path to model
+model = vosk.Model(config.vosk_path_small)  # path to model
 
 recognizer = recognition.SpeechRecognizer()
 

@@ -28,6 +28,9 @@ def home():
     time.sleep(.2)
     govee_local.brightnessAll(100)
     time.sleep(.2)
+    #if (playlist != "Fall"):
+    #    govee_local.color(LAMP_IP, 220, 140, 50)
+    #else:
     govee_local.color(LAMP_IP, r, g, b)
     govee_local.color(CLOSET_IP, 220, 140, 50)
     govee_local.color(BATHROOM_IP1, 220, 140, 50)
@@ -101,21 +104,26 @@ def interstellar():
 
 def boot():
     print("Initializing...")
-    audio.enqueue_sound("diamond_tunes-techno-mixtape-logo-203265.wav")
-    govee_local.switchAll(1)
-    govee_local.colorAll(0, 0, 255)
-    govee_local.brightnessAll(10)
+    govee_local.switchAll(0)
+    time.sleep(.8)
+    govee_local.switch(LAMP_IP, 1)
+    govee_local.brightness(LAMP_IP, 100)
+    time.sleep(.7)
+    govee_local.switch(BATHROOM_IP1, 1)
+    govee_local.brightness(BATHROOM_IP1, 100)
+    govee_local.switch(BATHROOM_IP2, 1)
+    govee_local.brightness(BATHROOM_IP2, 100)
+    time.sleep(.7)
+    govee_local.switch(CLOSET_IP, 1)
+    govee_local.brightness(CLOSET_IP, 100)
     time.sleep(.5)
-    govee_local.brightnessAll(30)
+    govee_local.switch(STRIP_IP, 1)
+    govee_local.brightness(STRIP_IP, 100)
+    time.sleep(1)
+    govee_local.brightnessAll(1)
     time.sleep(.5)
-    govee_local.brightnessAll(60)
-    time.sleep(1)
-    govee_local.brightnessAll(100)
-    time.sleep(1)
-    audio.enqueue_sound("dragon-studio-digital-unlock-433002.wav")
-    govee_local.brightnessAll(50)
-    time.sleep(1)
     home()
+
 
 def rise():
     govee_local.brightnessAll(100)

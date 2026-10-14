@@ -24,7 +24,7 @@ KEYWORDS = {
     "cycle": actions.rotate
 }
 
-model = vosk.Model(config.vosk_path_lgraph)
+model = vosk.Model(config.vosk_path_small)
 #grammar = json.dumps(list(KEYWORDS.keys()))
 
 class SpeechRecognizer:
