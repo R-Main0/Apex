@@ -20,7 +20,7 @@ GOVEE_IPS = {
 }
 
 device_ids = [
-    "60:1C:D9:36:34:39:37:1E",  # Strip 
+    "60-74-F4-39-C7-52",  # Strip 
     "05:71:5C:E7:53:68:C4:80",  # Bathroom LED 1 
     "05:43:5C:E7:53:46:7F:14",  # Bathroom LED 2 
     "05:6C:5C:E7:53:46:8D:38",  # Lamp LED 

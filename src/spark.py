@@ -4,8 +4,10 @@ import os
 from PIL import Image
 import win32event
 import win32api
+import time
 
-mutex = win32event.CreateMutex(None, False, "ApexSparkMutex")
+time.sleep(2)
+mutex = win32event.CreateMutex(None, False, "ApexMutex")
 
 if win32api.GetLastError() == 183:
     print("Already running")

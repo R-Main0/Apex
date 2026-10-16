@@ -44,9 +44,11 @@ icon = pystray.Icon(
 # --- Program Entry Point ---
 icon.run_detached()
 govee_local.start_govee_local_engine()
+time.sleep(.2)
+govee_local.switchAll(0)
+time.sleep(1.5)
 audio.start_audio_engine()
-audio.enqueue_sound("nesterouk-cinematic-piano-logo-144986.wav")
-time.sleep(.4)
+time.sleep(.2)
 actions.boot()
 stream.runStream()
 
